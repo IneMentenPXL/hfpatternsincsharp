@@ -62,7 +62,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Decorator.cs" />
+    <Compile Include="AfricanBlend.cs" />
+    <Compile Include="Beverage.cs" />
+    <Compile Include="CondimentDecorator.cs" />
+    <Compile Include="Soy.cs" />
+    <Compile Include="Cream.cs" />
+    <Compile Include="HouseBlend.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

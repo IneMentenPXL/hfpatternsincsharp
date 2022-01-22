@@ -1,22 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.IO;
 
 namespace Decorator
 {
-    class UpperCaseTextReader
+    internal class UpperCaseTextReader
     {
-        TextReader myTextReader;
+        private readonly TextReader myTextReader;
 
-        UpperCaseTextReader(TextReader newTextReader)
+        private UpperCaseTextReader(TextReader newTextReader)
         {
-            this.myTextReader = newTextReader;
+            myTextReader = newTextReader;
         }
 
         public string ReadToEnd()
         {
-            return (myTextReader.ReadToEnd().ToUpper());
+            return myTextReader.ReadToEnd().ToUpper();
 
             // example
             //UpperCaseTextReader reader =
@@ -25,33 +23,22 @@ namespace Decorator
         }
     }
 
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             Beverage bev = new AfricanBlend();
-            Console.WriteLine(
-                String.Format("{0} - ${1}",
-                    bev.GetDescription(),
-                    bev.GetCost()));
+            Console.WriteLine("{0} - ${1}", bev.GetDescription(), bev.GetCost());
 
             bev = new HouseBlend();
-            Console.WriteLine(
-                String.Format("{0} - ${1}",
-                    bev.GetDescription(),
-                    bev.GetCost()));
+            bev.SetSize(Beverage.Size.Venti);
+            Console.WriteLine("{0} - ${1}", bev.GetDescription(), bev.GetCost());
 
             bev = new Cream(bev);
-            Console.WriteLine(
-                String.Format("{0} - ${1}",
-                    bev.GetDescription(),
-                    bev.GetCost()));
+            Console.WriteLine("{0} - ${1}", bev.GetDescription(), bev.GetCost());
 
-            bev = new Cream(bev);
-            Console.WriteLine(
-                String.Format("{0} - ${1}",
-                    bev.GetDescription(),
-                    bev.GetCost()));
+            bev = new Soy(bev);
+            Console.WriteLine("{0} - ${1}", bev.GetDescription(), bev.GetCost());
             Console.ReadLine();
         }
     }
