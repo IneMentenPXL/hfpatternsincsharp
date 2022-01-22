@@ -1,60 +1,58 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace SimpleFactory
+namespace AbstractFactory
 {
     class CheesePizza : Pizza
     {
-        IIngredientFactory ingredientFactory;
+        private readonly IIngredientFactory _ingredientFactory;
 
         public CheesePizza(IIngredientFactory customIngredientFactory)
         {
-            this.ingredientFactory = customIngredientFactory;
+            _ingredientFactory = customIngredientFactory;
         }
 
         public override void Prepare()
         {
-            Console.WriteLine("Making custom cheese pizza.");
-            this.ingredientFactory.CreateDough();
-            this.ingredientFactory.CreateSauce();
-            this.ingredientFactory.CreateCheese();
+            Console.WriteLine($"Preparing {Name}");
+            _ingredientFactory.CreateDough();
+            _ingredientFactory.CreateSauce();
+            _ingredientFactory.CreateCheese();
         }
     }
 
     class ClamPizza : Pizza
     {
-        IIngredientFactory ingredientFactory;
+        private readonly IIngredientFactory _ingredientFactory;
 
         public ClamPizza(IIngredientFactory customIngredientFactory)
         {
-            this.ingredientFactory = customIngredientFactory;
+            _ingredientFactory = customIngredientFactory;
         }
 
         public override void Prepare()
         {
-            Console.WriteLine("Making custom sea-creature pizza.");
-            this.ingredientFactory.CreateDough();
-            this.ingredientFactory.CreateSauce();
-            this.ingredientFactory.CreateCheese();
+            Console.WriteLine($"Preparing {Name}");
+            _ingredientFactory.CreateDough();
+            _ingredientFactory.CreateSauce();
+            _ingredientFactory.CreateCheese();
         }
     }
 
     class ShoePizza : Pizza
     {
-        IIngredientFactory ingredientFactory;
+        private readonly IIngredientFactory _ingredientFactory;
 
         public ShoePizza(IIngredientFactory customIngredientFactory)
         {
-            this.ingredientFactory = customIngredientFactory;
+            _ingredientFactory = customIngredientFactory;
         }
 
         public override void Prepare()
         {
-            Console.WriteLine("Making custom orthopedic pizza.");
-            this.ingredientFactory.CreateDough();
-            this.ingredientFactory.CreateSauce();
-            this.ingredientFactory.CreateCheese();
+            Console.WriteLine($"Preparing {Name}");
+            _ingredientFactory.CreateDough();
+            _ingredientFactory.CreateSauce();
+            _ingredientFactory.CreateCheese();
         }
     }
 }

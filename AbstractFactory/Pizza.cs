@@ -1,15 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace SimpleFactory
+namespace AbstractFactory
 {
     public abstract class Pizza
     {
-        public virtual void Prepare()
-        {
-            Console.WriteLine("Standard preparation technique.");
-        }
+        public string Name { get; set; }
+
+        public abstract void Prepare();
 
         public virtual void Bake()
         {

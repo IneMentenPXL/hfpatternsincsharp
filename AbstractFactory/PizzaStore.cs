@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace SimpleFactory
+﻿namespace AbstractFactory
 {
     public abstract class PizzaStore
     {
@@ -31,19 +27,28 @@ namespace SimpleFactory
                 new PortlandIngredientFactory();
 
             if (type == "Cheese")
+            {
                 pizza = new CheesePizza(ingredientFactory);
+                pizza.Name = "Portland style cheese Pizza";
+            }
             else if (type == "Clam")
+            {
                 pizza = new ClamPizza(ingredientFactory);
+                pizza.Name = "Portland style clam Pizza";
+            }
             else if (type == "Suede")
+            {
                 pizza = new ShoePizza(ingredientFactory);
+                pizza.Name = "Portland style suede Pizza";
+            }
 
             return pizza;
         }
     }
-
+    
     public class HillsboroPizzaStore : PizzaStore
     {
-        // hillsboro-style preparation for all pizzas
+        // portland-style preparation for all pizzas
         protected override Pizza CreatePizza(string type)
         {
             Pizza pizza = null;
@@ -51,11 +56,20 @@ namespace SimpleFactory
                 new HillsboroIngredientFactory();
 
             if (type == "Cheese")
+            {
                 pizza = new CheesePizza(ingredientFactory);
+                pizza.Name = "Portland style cheese Pizza";
+            }
             else if (type == "Clam")
+            {
                 pizza = new ClamPizza(ingredientFactory);
+                pizza.Name = "Portland style clam Pizza";
+            }
             else if (type == "Suede")
+            {
                 pizza = new ShoePizza(ingredientFactory);
+                pizza.Name = "Portland style suede Pizza";
+            }
 
             return pizza;
         }

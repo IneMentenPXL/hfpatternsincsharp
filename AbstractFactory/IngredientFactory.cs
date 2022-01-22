@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace SimpleFactory
+namespace AbstractFactory
 {
     public interface IIngredientFactory
     {
@@ -29,19 +27,19 @@ namespace SimpleFactory
 
         public Dough CreateDough()
         {
-            Console.WriteLine("Portland");
+            Console.WriteLine("Portland dough");
             return new Dough();
         }
 
         public Sauce CreateSauce()
         {
-            Console.WriteLine("Portland");
+            Console.WriteLine("Portland sauce");
             return new Sauce();
         }
 
         public Cheese CreateCheese()
         {
-            Console.WriteLine("Portland");
+            Console.WriteLine("Portland cheese");
             return new Cheese();
         }
 
@@ -54,19 +52,19 @@ namespace SimpleFactory
 
         public Dough CreateDough()
         {
-            Console.WriteLine("Hillsboro");
+            Console.WriteLine("Hillsboro dough");
             return new Dough();
         }
 
         public Sauce CreateSauce()
         {
-            Console.WriteLine("Hillsboro");
+            Console.WriteLine("Hillsboro sauce");
             return new Sauce();
         }
 
         public Cheese CreateCheese()
         {
-            Console.WriteLine("Hillsboro");
+            Console.WriteLine("Hillsboro cheese");
             return new Cheese();
         }
 

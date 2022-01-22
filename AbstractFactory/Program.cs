@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace SimpleFactory
+namespace AbstractFactory
 {
     class Program
     {
@@ -12,6 +10,7 @@ namespace SimpleFactory
             store.OrderPizza("Cheese");
             store = new HillsboroPizzaStore();
             store.OrderPizza("Clam");
+            Console.ReadLine();
         }
     }
 }
