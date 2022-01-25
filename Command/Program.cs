@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Diagnostics;
 
 namespace Command
 {
@@ -25,7 +22,13 @@ namespace Command
 
             remote.SetCommand(1, doorOpen, doorClose);
             remote.OnButtonWasPressed(1);
+            Console.WriteLine(remote);
             remote.OffButtonWasPressed(1);
+            Console.WriteLine(remote);
+            remote.UndoButtonWasPressed();
+            remote.OffButtonWasPressed(1);
+            Console.WriteLine(remote);
+            Console.ReadLine();
         }
     }
 
@@ -38,6 +41,7 @@ namespace Command
         // another button push equals deactivating the device.
         ICommand[] onCommands;
         ICommand[] offCommands;
+        ICommand undoCommand;
 
         public SimpleRemoteControl()
         {
@@ -50,30 +54,40 @@ namespace Command
                 onCommands[i] = noCommand;
                 offCommands[i] = noCommand;
             }
+
+            undoCommand = noCommand;
         }
 
         public void SetCommand(int slot, ICommand onCommand, ICommand offCommand)
         {
-            this.onCommands[slot] = onCommand;
-            this.offCommands[slot] = offCommand;
+            onCommands[slot] = onCommand;
+            offCommands[slot] = offCommand;
         }
 
         public void OnButtonWasPressed(int slot)
         {
-            this.onCommands[slot].Execute();
+            onCommands[slot].Execute();
+            undoCommand = onCommands[slot];
         }
 
         public void OffButtonWasPressed(int slot)
         {
-            this.offCommands[slot].Execute();
+            offCommands[slot].Execute();
+            undoCommand = offCommands[slot];
+        }
+
+        public void UndoButtonWasPressed()
+        {
+            undoCommand.Undo();
         }
 
         public override string ToString()
         {
             StringBuilder output = new StringBuilder("\n--- Remote Control ---\n");
-            for (int i = 0; i != this.onCommands.Length; ++i)
+            for (int i = 0; i != onCommands.Length; ++i)
                 output.AppendFormat("[slot {0}] {1} {2}\n",
-                    i, this.onCommands[i].GetType().Name, this.offCommands[i].GetType().Name);
+                    i, onCommands[i].GetType().Name, offCommands[i].GetType().Name);
+            output.AppendFormat("[undo] {0}", undoCommand.GetType().Name);
             return output.ToString();
         }
     }

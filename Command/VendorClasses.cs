@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Diagnostics;
 
 namespace Command
 {
@@ -10,12 +6,12 @@ namespace Command
     {
         public void On()
         {
-            Util.DisplayCurrentMethodName();
+            Console.WriteLine("Light is on");
         }
 
         public void Off()
         {
-            Util.DisplayCurrentMethodName();
+            Console.WriteLine("Light is off");
         }
     }
 
@@ -23,40 +19,27 @@ namespace Command
     {
         public void Up()
         {
-            Util.DisplayCurrentMethodName();
+            Console.WriteLine("Garage Door is open");
         }
 
         public void Down()
         {
-            Util.DisplayCurrentMethodName();
+            Console.WriteLine("Garage Door is closed");
         }
 
         public void Stop()
         {
-            Util.DisplayCurrentMethodName();
+            Console.WriteLine("Garage Door is stopped");
         }
 
         public void LightOn()
         {
-            Util.DisplayCurrentMethodName();
+            Console.WriteLine("Garage light is on");
         }
 
         public void LightOff()
         {
-            Util.DisplayCurrentMethodName();
-        }
-
-    }
-
-    static class Util
-    {
-        public static void DisplayCurrentMethodName()
-        {
-            StackTrace stackTrace = new StackTrace();
-
-            Console.WriteLine("{0} - {1}",
-                stackTrace.GetFrame(0).GetType().Name,
-                stackTrace.GetFrame(1).GetMethod().Name);
+            Console.WriteLine("Garage light is off");
         }
     }
 }

@@ -1,15 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Command
+﻿namespace Command
 {
     public class NoCommand : ICommand
     {
         #region ICommand Members
 
         public void Execute()
+        {
+        }
+
+        public void Undo()
         {
         }
 
@@ -26,9 +25,15 @@ namespace Command
         }
 
         #region ICommand Members
+
         public void Execute()
         {
-            this.light.On();
+            light.On();
+        }
+
+        public void Undo()
+        {
+            light.Off();
         }
 
         #endregion
@@ -44,14 +49,22 @@ namespace Command
         }
 
         #region ICommand Members
+
         public void Execute()
         {
-            this.door.LightOn();
-            this.door.Up();
+            door.LightOn();
+            door.Up();
+        }
+
+        public void Undo()
+        {
+            door.Down();
+            door.LightOff();
         }
 
         #endregion
     }
+
     public class LightOff : ICommand
     {
         Light light;
@@ -62,9 +75,15 @@ namespace Command
         }
 
         #region ICommand Members
+
         public void Execute()
         {
-            this.light.Off();
+            light.Off();
+        }
+
+        public void Undo()
+        {
+            light.On();
         }
 
         #endregion
@@ -80,10 +99,17 @@ namespace Command
         }
 
         #region ICommand Members
+
         public void Execute()
         {
-            this.door.Down();
-            this.door.LightOff();
+            door.Down();
+            door.LightOff();
+        }
+
+        public void Undo()
+        {
+            door.LightOn();
+            door.Up();
         }
 
         #endregion
