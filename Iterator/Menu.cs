@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Collections;
-using System.Linq;
-using System.Text;
 
 namespace Iterator
 {
-
     public class Menu : IMenu
     {
         string name;
+
         public string Name
         {
             get { return name; }
@@ -16,6 +14,7 @@ namespace Iterator
         }
 
         string description;
+
         public string Description
         {
             get { return description; }
@@ -37,6 +36,8 @@ namespace Iterator
 
             foreach (IMenu child in this.children)
                 child.Print();
+
+            Console.WriteLine();
         }
 
         public void Add(IMenu menu)
